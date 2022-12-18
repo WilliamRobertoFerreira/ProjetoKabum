@@ -23,22 +23,19 @@ def functionrepeat(site, functionlist):
         funcao.click()
         sleep(3)
 
-
 site = webdriver.Chrome(service=Service(executable_path='chromedriver.exe'))
 site.get('https://www.kabum.com.br/hardware/placa-de-video-vga')
 acoes = ActionChains(site)
 
 ordenar = '//*[@id="Filter"]/div[1]/select'
 precocrescente = '//*[@id="Filter"]/div[1]/select/option[2]'
+cookieaccept = '//*[@id="onetrust-accept-btn-handler"]'
 
-#order by price (lowest to highest price)
-ordenarbutton = site.find_element(By.XPATH, ordenar)
-ordenarbutton.click()
-sleep(3)
+#first interaction list contains the first step when the site is loaded
+firstinteraction = [cookieaccept,ordenar,precocrescente]
 
-precocrescentebutton = site.find_element(By.XPATH, precocrescente)
-precocrescentebutton.click()
-sleep(3)
+#calling function repeat
+functionrepeat(site, firstinteraction)
 
 #GPUVRAM ID's
 tengb = '//*[@id="asideFilters"]/div[2]/details[7]/div/label[2]'
@@ -49,17 +46,15 @@ twentyfourgb = '//*[@id="asideFilters"]/div[2]/details[7]/div/label[7]'
 sixgb = '//*[@id="asideFilters"]/div[2]/details[7]/div/label[9]'
 eightgb = '//*[@id="asideFilters"]/div[2]/details[7]/div/label[10]'
 seemoregpuvram = '//*[@id="asideFilters"]/div[2]/details[7]/div/span'
-cookieaccept = '//*[@id="onetrust-accept-btn-handler"]'
 
 #list with all the vpuvram ids
-gpuvramlist = [cookieaccept,tengb,twelvegb,sixteengb,seemoregpuvram,twentygb,twentyfourgb,sixgb,eightgb]
+gpuvramlist = [tengb,twelvegb,sixteengb,seemoregpuvram,twentygb,twentyfourgb,sixgb,eightgb]
 
 #calling functionrepeat
 functionrepeat(site, gpuvramlist)
 
-
 #GPUTYPE
-sixteensixtyti = '//*[@id="asideFilters"]/div[2]/details[11]/div/label[6]'
+# sixteensixtyti = '//*[@id="asideFilters"]/div[2]/details[11]/div/label[6]'
 sixteensixtysuper = '//*[@id="asideFilters"]/div[2]/details[11]/div/label[5]'
 rtxtwentysixty = '//*[@id="asideFilters"]/div[2]/details[15]/div/label[1]'
 rtxtwentysixtysuper = '//*[@id="asideFilters"]/div[2]/details[15]/div/label[2]'
@@ -75,9 +70,13 @@ rtxthirtyninetyti = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[9]'
 seemoregputypethirty = '//*[@id="asideFilters"]/div[2]/details[9]/div/span'
 seemoreegputypetensixty = '//*[@id="asideFilters"]/div[2]/details[11]/div/span'
 
-gputypelist =[sixteensixtyti,sixteensixtysuper,rtxtwentysixty,rtxtwentysixtysuper,rtxtwentyeighty,rtxthirtysixty,
-              rtxthirtysixtyti,rtxthirtyseventy,rtxthirtyseventyti,rtxthirtyeighty,rtxthirtyeightyti,rtxthirtyninety,
-              rtxthirtyninetyti,seemoregputypethirty,seemoreegputypetensixty]
+#list with all gputype
+gputypelist =[seemoreegputypetensixty,sixteensixtysuper,rtxtwentysixty,rtxtwentysixtysuper,rtxtwentyeighty,
+              rtxthirtysixty,rtxthirtysixtyti,rtxthirtyseventy,rtxthirtyseventyti,seemoregputypethirty,rtxthirtyeighty,
+              rtxthirtyeightyti,rtxthirtyninety,rtxthirtyninetyti]
+
+#calling functionrepeat
+functionrepeat(site, gputypelist)
 
 
 
