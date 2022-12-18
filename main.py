@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 
-
+#that validation is used to check xpath everytime is called
 def validacaoxpath(site, xpath):
     try:
         site.find_element(By.XPATH, xpath)
@@ -41,8 +41,11 @@ eightgb = '//*[@id="asideFilters"]/div[2]/details[7]/div/label[10]'
 seemoregpuvram = '//*[@id="asideFilters"]/div[2]/details[7]/div/span'
 cookieaccept = '//*[@id="onetrust-accept-btn-handler"]'
 
-l = [cookieaccept,tengb,twelvegb,sixteengb,seemoregpuvram,twentygb,twentyfourgb,sixgb,eightgb]
-for i in l:
+#list with all the vpuvram ids
+gpuvramlist = [cookieaccept,tengb,twelvegb,sixteengb,seemoregpuvram,twentygb,twentyfourgb,sixgb,eightgb]
+
+#for with an validation for every xpath, that's prevent when the page is not loaded and can't find the xpath div
+for i in gpuvramlist:
     while not validacaoxpath(site, i):
         sleep(1)
     funcao = site.find_element(By.XPATH, i)
@@ -50,23 +53,26 @@ for i in l:
     sleep(3)
 
 
-#
-# #GPUTYPE
-# sixteensixtyti = '//*[@id="asideFilters"]/div[2]/details[11]/div/label[6]'
-# sixteensixtysuper = '//*[@id="asideFilters"]/div[2]/details[11]/div/label[5]'
-# rtxtwentysixty = '//*[@id="asideFilters"]/div[2]/details[15]/div/label[1]'
-# rtxtwentysixtysuper = '//*[@id="asideFilters"]/div[2]/details[15]/div/label[2]'
-# rtxtwentyeighty = '//*[@id="asideFilters"]/div[2]/details[15]/div/label[3]'
-# rtxthirtysixty = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[2]'
-# rtxthirtysixtyi = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[3]'
-# rtxthirtyseventy = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[4]'
-# rtxthirtyseventyti = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[5]'
-# rtxthirtyeighty = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[6]'
-# rtxthirtyeightyti = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[7]'
-# rtxthirtyninety = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[8]'
-# rtxthirtyninetyti = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[9]'
-# seemoregputypethirty = '//*[@id="asideFilters"]/div[2]/details[9]/div/span'
-# seemoreegputypetensixty = '//*[@id="asideFilters"]/div[2]/details[11]/div/span'
+#GPUTYPE
+sixteensixtyti = '//*[@id="asideFilters"]/div[2]/details[11]/div/label[6]'
+sixteensixtysuper = '//*[@id="asideFilters"]/div[2]/details[11]/div/label[5]'
+rtxtwentysixty = '//*[@id="asideFilters"]/div[2]/details[15]/div/label[1]'
+rtxtwentysixtysuper = '//*[@id="asideFilters"]/div[2]/details[15]/div/label[2]'
+rtxtwentyeighty = '//*[@id="asideFilters"]/div[2]/details[15]/div/label[3]'
+rtxthirtysixty = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[2]'
+rtxthirtysixtyti = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[3]'
+rtxthirtyseventy = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[4]'
+rtxthirtyseventyti = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[5]'
+rtxthirtyeighty = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[6]'
+rtxthirtyeightyti = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[7]'
+rtxthirtyninety = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[8]'
+rtxthirtyninetyti = '//*[@id="asideFilters"]/div[2]/details[9]/div/label[9]'
+seemoregputypethirty = '//*[@id="asideFilters"]/div[2]/details[9]/div/span'
+seemoreegputypetensixty = '//*[@id="asideFilters"]/div[2]/details[11]/div/span'
+
+gputypelist =[sixteensixtyti,sixteensixtysuper,rtxtwentysixty,rtxtwentysixtysuper,rtxtwentyeighty,rtxthirtysixty,
+              rtxthirtysixtyti,rtxthirtyseventy,rtxthirtyseventyti,rtxthirtyeighty,rtxthirtyeightyti,rtxthirtyninety,
+              rtxthirtyninetyti,seemoregputypethirty,seemoreegputypetensixty ]
 
 
 
