@@ -14,6 +14,16 @@ def validacaoxpath(site, xpath):
         return False
     return True
 
+#for with an validation for every xpath, that's prevent when the page is not loaded and can't find the xpath div
+def functionrepeat(site, functionlist):
+    for i in functionlist:
+        while not validacaoxpath(site, i):
+            sleep(1)
+        funcao = site.find_element(By.XPATH, i)
+        funcao.click()
+        sleep(3)
+
+
 site = webdriver.Chrome(service=Service(executable_path='chromedriver.exe'))
 site.get('https://www.kabum.com.br/hardware/placa-de-video-vga')
 acoes = ActionChains(site)
@@ -44,13 +54,8 @@ cookieaccept = '//*[@id="onetrust-accept-btn-handler"]'
 #list with all the vpuvram ids
 gpuvramlist = [cookieaccept,tengb,twelvegb,sixteengb,seemoregpuvram,twentygb,twentyfourgb,sixgb,eightgb]
 
-#for with an validation for every xpath, that's prevent when the page is not loaded and can't find the xpath div
-for i in gpuvramlist:
-    while not validacaoxpath(site, i):
-        sleep(1)
-    funcao = site.find_element(By.XPATH, i)
-    funcao.click()
-    sleep(3)
+#calling functionrepeat
+functionrepeat(site, gpuvramlist)
 
 
 #GPUTYPE
@@ -72,7 +77,7 @@ seemoreegputypetensixty = '//*[@id="asideFilters"]/div[2]/details[11]/div/span'
 
 gputypelist =[sixteensixtyti,sixteensixtysuper,rtxtwentysixty,rtxtwentysixtysuper,rtxtwentyeighty,rtxthirtysixty,
               rtxthirtysixtyti,rtxthirtyseventy,rtxthirtyseventyti,rtxthirtyeighty,rtxthirtyeightyti,rtxthirtyninety,
-              rtxthirtyninetyti,seemoregputypethirty,seemoreegputypetensixty ]
+              rtxthirtyninetyti,seemoregputypethirty,seemoreegputypetensixty]
 
 
 
