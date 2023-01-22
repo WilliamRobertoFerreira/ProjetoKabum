@@ -1,5 +1,7 @@
 from time import sleep
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
@@ -23,7 +25,9 @@ def functionrepeat(site, functionlist):
         funcao.click()
         sleep(3)
 
-site = webdriver.Chrome(service=Service(executable_path='chromedriver.exe'))
+servico = Service(ChromeDriverManager().install())
+site = webdriver.Chrome(service=servico)
+
 # site.get('https://www.kabum.com.br/hardware/placa-de-video-vga')
 site.get('https://www.kabum.com.br/hardware/placa-de-video-vga?page_number=1&page_size=20&facet_filters=eyJNZW3Ds3JpYSI6WyIxMCBHQiIsIjEyIEdCIiwiMTYgR0IiLCIyMCBHQiIsIjI0IEdCIiwiNiBHQiIsIjggR0IiXSwiR2VGb3JjZSBHVFggU8OpcmllIDE2IjpbIkdUWCAxNjYwIFRpIiwiR1RYIDE2NjAgU3VwZXIiXX0=&sort=price')
 acoes = ActionChains(site)
