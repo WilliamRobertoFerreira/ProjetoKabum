@@ -28,7 +28,7 @@ def function_repeat(site, function_list):
 
 
 # in this function we click on the first 3 gpus separated by type and save all the information we need in one list
-def data_crawler(site, data_list):
+def data_scraping(site, data_list):
     for i in range(1, 4):
         sleep(2)
         gpu_name_xpath = f'//*[@id="listing"]/div[3]/div/div[2]/div[1]/main/div[{i}]/a/div/button/div/h2/span'
@@ -97,7 +97,7 @@ function_repeat(site, gtx_series_1660)
 
 # list for data crawler function call
 all_gpu_list_1660 = []
-data_crawler(site, all_gpu_list_1660)
+data_scraping(site, all_gpu_list_1660)
 
 # removing 1660 series to call another one
 gtx_series_1660_unselect = [gpu_1660, gpu_1660_super, gpu_1660_ti]
@@ -114,7 +114,7 @@ function_repeat(site, rtx_series_2000)
 
 # calling function data crawler to mine all the information and save in all_gpu_list_2000
 all_gpu_list_2000 = []
-data_crawler(site, all_gpu_list_2000)
+data_scraping(site, all_gpu_list_2000)
 
 # removing series 20 to call another one
 function_repeat(site, rtx_series_2000)
@@ -139,7 +139,7 @@ function_repeat(site, rtx_series_3000)
 
 # calling function data crawler to mine all the information and save in all_gpu_list_3000
 all_gpu_list_3000 = []
-data_crawler(site, all_gpu_list_3000)
+data_scraping(site, all_gpu_list_3000)
 
 # calling function_repeat do unselect all the info we don't need anymore
 rtx_series_3000_unselect = [rtx_3060, rtx_3060_ti, rtx_3070, rtx_3070_ti,
