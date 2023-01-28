@@ -1,6 +1,7 @@
 from time import sleep
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
@@ -52,8 +53,13 @@ def show_lists(data_list):
         print()
 
 
-driver_service = Service(ChromeDriverManager().install())
-site = webdriver.Chrome(service=driver_service)
+# if you are using Chrome browser please select this one
+# driver_service = Service(ChromeDriverManager().install())
+# site = webdriver.Chrome(service=driver_service)
+
+# if you are using Firefox Browser please select this one
+driver_service = Service(GeckoDriverManager().install())
+site = webdriver.Firefox(service=driver_service)
 
 site.get('https://www.kabum.com.br/hardware/placa-de-video-vga')
 site_actions = ActionChains(site)
