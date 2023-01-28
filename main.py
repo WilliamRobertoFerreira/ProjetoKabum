@@ -38,7 +38,7 @@ def data_scraping(site, data_list):
         gpu_price = site.find_element(By.XPATH, gpu_price_xpath).text
         sleep(2)
         site.find_element(By.XPATH, gpu_name_xpath).click()
-        sleep(2)
+        sleep(3)
         current_url = site.current_url
         gpu_link = current_url
         data_list.append([gpu_name, gpu_price, gpu_link])
@@ -54,12 +54,12 @@ def show_lists(data_list):
 
 
 # if you are using Chrome browser please select this one
-# driver_service = Service(ChromeDriverManager().install())
-# site = webdriver.Chrome(service=driver_service)
+driver_service = Service(ChromeDriverManager().install())
+site = webdriver.Chrome(service=driver_service)
 
 # if you are using Firefox Browser please select this one
-driver_service = Service(GeckoDriverManager().install())
-site = webdriver.Firefox(service=driver_service)
+# driver_service = Service(GeckoDriverManager().install())
+# site = webdriver.Firefox(service=driver_service)
 
 site.get('https://www.kabum.com.br/hardware/placa-de-video-vga')
 site_actions = ActionChains(site)
