@@ -11,6 +11,13 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 # that validation is used to check xpath everytime is called
 def xpath_validation(site, xpath):
+    """
+    This Function look for the xpath before start the scraping, Trying to find the information
+    :param site: site is the webdriver service
+    :param xpath: xpath is where is the information XPath expression can be used to search through an XML document,
+     and extract information from any part of the document, such as an element or attribute
+    :return: return True if the xpath is located, if not, return false
+    """
     try:
         site.find_element(By.XPATH, xpath)
     except NoSuchElementException:
@@ -20,6 +27,13 @@ def xpath_validation(site, xpath):
 
 # for with an validation for every xpath, that's prevent when the page is not loaded and can't find the xpath div
 def function_repeat(site, function_list):
+    """
+    This function use xpath validation, if the information is located in the website it continues, if not it waits 1
+    second waiting for the page to load
+    :param site: site is the webdriver service
+    :param function_list: Function list is an list with all parameters we need to use to click or select in the website
+    :return: return the click on selected information
+    """
     for i in function_list:
         while not xpath_validation(site, i):
             sleep(1)
@@ -30,6 +44,13 @@ def function_repeat(site, function_list):
 
 # in this function we click on the first 3 gpus separated by type and save all the information we need in one list
 def data_scraping(site, data_list):
+    """
+
+    :param site: site is the webdriver service
+    :param data_list: This data list have all the data will return in the end of funcion, it scrap information like
+    price, link and name
+    :return: return a list with the first 3 gpu info
+    """
     for i in range(1, 4):
         sleep(2)
         gpu_name_xpath = f'//*[@id="listing"]/div[3]/div/div[2]/div[1]/main/div[{i}]/a/div/button/div/h2/span'
@@ -47,6 +68,11 @@ def data_scraping(site, data_list):
 
 
 def show_lists(data_list):
+    """
+    That def return the data we mined, using a method list in list, It separates multiple lists within a single list
+    :param data_list:
+    :return:
+    """
     for l in data_list:
         for i in l:
             print(i)
